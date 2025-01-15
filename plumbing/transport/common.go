@@ -19,7 +19,6 @@ import (
 	"fmt"
 	"io"
 	"net/url"
-	"path/filepath"
 	"strconv"
 	"strings"
 
@@ -296,14 +295,9 @@ func parseFile(endpoint string) (*Endpoint, bool) {
 		return nil, false
 	}
 
-	path, err := filepath.Abs(endpoint)
-	if err != nil {
-		return nil, false
-	}
-
 	return &Endpoint{
 		Protocol: "file",
-		Path:     path,
+		Path:     endpoint,
 	}, true
 }
 
